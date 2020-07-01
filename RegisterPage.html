@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <title>Registeration Page</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #107d85;
+        font-family: "Oswald", sans-serif;
+      }
+      .main {
+        width: 700px;
+        height: 500px;
+        border: 1px solid #dadada;
+        background: #607d8b;
+        margin-top: 40px;
+      }
+
+      #row {
+        width: 99%;
+        height: 55px;
+        color: black;
+        display: flex;
+        justify-content: center;
+      }
+
+      .col {
+        width: 33%;
+        height: 89%;
+        float: left;
+        margin: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      input {
+        height: 34px;
+        width: 200px;
+        border: 1px solid #bababa;
+        background: #ffffff;
+        border-radius: 5px;
+      }
+
+      input:hover {
+        background: rgb(226, 215, 215);
+        transform: scale(1.03);
+        transition-duration: 1s;
+      }
+
+      input {
+        font-size: 22px;
+      }
+
+      #address {
+        border-radius: 5px;
+      }
+
+      .btn {
+        display: block;
+        margin: 40px;
+        padding: 8px;
+        background-color: #bababa;
+        border: 0px;
+        border-radius: 5px;
+      }
+    </style>
+    <script>
+      function checkFields(inputId, errorid) {
+        var fieldId = document.getElementById(inputId).value;
+        if (fieldId == "") {
+          document.getElementById(errorid).innerHTML = "Field is Empty !!";
+        } else {
+          document.getElementById(errorid).innerHTML = "";
+        }
+      }
+
+      function checkName(event, err) {
+        if (
+          !(
+            (event.which >= 65 && event.which <= 90) ||
+            (event.which >= 97 && event.which <= 122) ||
+            event.which == 0 ||
+            event.which == 8
+          )
+        ) {
+          document.getElementById(err).innerHTML = "Invalid Name Format !!";
+          return false;
+        }
+      }
+
+      function checkEmail() {
+        var email = document.getElementById("e").value;
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+
+        if (atpos < 4 || dotpos < atpos + 3) {
+          document.getElementById("error2").innerHTML = "Invalid Email !!";
+        } else {
+          document.getElementById("error2").innerHTML = "";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <h2><center>User Registration</center></h2>
+
+      <div id="row">
+        <div class="col">First Name</div>
+        <div class="col">
+          <input
+            type="text"
+            id="firstName"
+            onkeypress="return checkName(event,'error')"
+            onblur="checkFields('firstName','error')"
+          />
+        </div>
+        <div class="col" id="error" style="color: red;"></div>
+      </div>
+
+      <div id="row">
+        <div class="col">Last Name</div>
+        <div class="col">
+          <input
+            type="text"
+            id="lastname"
+            onblur="checkFields('lastname','error1')"
+          />
+        </div>
+        <div class="col" id="error1" style="color: red;"></div>
+      </div>
+
+      <div id="row">
+        <div class="col">Email Id</div>
+        <div class="col">
+          <input type="text" id="e" onblur="checkEmail()" />
+        </div>
+        <div class="col" id="error2" style="color: red;"></div>
+      </div>
+
+      <div id="row">
+        <div class="col">Password</div>
+        <div class="col">
+          <input
+            type="password"
+            id="password"
+            onblur="checkFields('password','error3')"
+          />
+        </div>
+        <div class="col" id="error3" style="color: red;"></div>
+      </div>
+
+      <div id="row">
+        <div class="col">Confirm Password</div>
+        <div class="col">
+          <input
+            type="password"
+            id="confirmPassword"
+            onblur="checkFields('confirmPassword','error4')"
+          />
+        </div>
+        <div class="col" style="color: red;" id="error4"></div>
+      </div>
+
+      <div id="row">
+        <div class="col">Address</div>
+        <div class="col">
+          <textarea
+            id="address"
+            onblur="checkFields('address','error5')"
+          ></textarea>
+        </div>
+        <div class="col" style="color: red;" id="error5"></div>
+      </div>
+      <div style="display: flex; justify-content: center; border: 0px;">
+        <button class="btn">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>

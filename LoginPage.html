@@ -1,0 +1,117 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login Page</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #081d41;
+        font-family: "Oswald", sans-serif;
+      }
+      div.main {
+        width: 550px;
+        padding: 10px 50px 25px;
+        border: 1px solid #ffffff;
+        background: white;
+        border-radius: 10px;
+        float: left;
+        margin-top: 50px;
+        transform: translateY(-10%);
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        height: 40px;
+        padding: 5px;
+        margin-bottom: 25px;
+        margin-top: 5px;
+        border: 2px solid #ccc;
+        color: #4f4f4f;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      input[type="button"] {
+        font-size: 16px;
+        background: skyblue;
+        border: 1px solid skyblue;
+        color: #4e4d4b;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px 0;
+        outline: none;
+      }
+      input[type="button"]:hover {
+        background: greenyellow;
+        border: 1px solid greenyellow;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      a {
+        text-decoration: greenyellow;
+        margin: 10px;
+        text-decoration: underline;
+      }
+    </style>
+    <script>
+      var attempt = 3; // Variable to count number of attempts.
+
+      function validate() {
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        if (username.value == "adhishanand" && password.value == "45628285") {
+          alert("Login successfully");
+          username.innerHTML = "";
+          password.innerHTML = "";
+          location.reload();
+        } else {
+          attempt--; //
+          alert("You have left " + attempt + " attempt;");
+
+          if (attempt == 0) {
+            document.getElementById("username").disabled = true;
+            document.getElementById("password").disabled = true;
+            document.getElementById("submit").disabled = true;
+            return false;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <h1 style="text-align: center; color: #bababa;" ;>Login</h1>
+        <form id="form_id" method="post" name="myform">
+          <label>User Name :</label>
+          <input type="text" name="username" id="username" />
+          <label>Password :</label>
+          <input type="password" name="password" id="password" />
+          <input type="button" value="Login" id="submit" onclick="validate()" />
+        </form>
+        <div style="text-align: center; margin: 10px;">
+          <a href="#">forget password</a>
+        </div>
+        <div>
+          <b>For testing purpose</b> <br />
+          Username: adhishanand<br />
+          Password: 45628285
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
